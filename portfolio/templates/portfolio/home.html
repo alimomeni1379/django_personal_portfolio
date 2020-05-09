@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+<h1>ali project</h1>
+
+
+{% load static %}
+<ol>
+    <li><a href="{% url 'blog:all_blog' %}">Blog</a></li>
+    <li><a href="{% static '/portfolio/a.pdf' %}">pdf</a></li>
+</ol>
+
+
+
+<br>
+
+<img src="{% static '/portfolio/ali.jpg' %}" height="300" width="400">
+<br>
+
+{% for project in projects %}
+    {{ project.title }}
+    <br>
+    {{ project.Description }}
+    <br>
+
+    <img src="{{ project.images.url }}" width="350" height="250">
+    <br>
+    {% if project.url %}
+        <a href="{{ project.url }}">link google</a>
+    {% endif %}
+    <br>
+{% endfor %}
+
+</body>
+</html>
